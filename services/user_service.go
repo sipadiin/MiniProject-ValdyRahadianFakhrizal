@@ -26,13 +26,11 @@ func GetMyProfile(userID uint) (*models.User, error) {
 }
 
 func UpdateMyProfile(userID uint, input UpdateUserInput) (*models.User, error) {
-	// 1. Ambil data user lama
 	user, err := repository.FindUserByID(userID)
 	if err != nil {
 		return nil, errors.New("user tidak ditemukan")
 	}
 
-	// 2. Update field yang diizinkan saja
 	if input.Nama != "" {
 		user.Nama = input.Nama
 	}
@@ -55,7 +53,6 @@ func UpdateMyProfile(userID uint, input UpdateUserInput) (*models.User, error) {
 		user.IdKota = input.IdKota
 	}
 
-	// 3. Simpan perubahan
 	if err := repository.UpdateUser(user); err != nil {
 		return nil, errors.New("gagal mengupdate profil")
 	}

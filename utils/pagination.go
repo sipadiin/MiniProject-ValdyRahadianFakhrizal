@@ -2,7 +2,6 @@ package utils
 
 import "github.com/gofiber/fiber/v2"
 
-// PaginationResponse format standar untuk semua list endpoint
 type PaginationResponse struct {
 	Data  interface{} `json:"data"`
 	Page  int         `json:"page"`
@@ -10,7 +9,6 @@ type PaginationResponse struct {
 	Total int64       `json:"total"`
 }
 
-// BuildPagination membuat response pagination yang konsisten
 func BuildPagination(data interface{}, page, limit int, total int64) PaginationResponse {
 	return PaginationResponse{
 		Data:  data,
@@ -20,8 +18,6 @@ func BuildPagination(data interface{}, page, limit int, total int64) PaginationR
 	}
 }
 
-// GetPaginationParams mengambil page dan limit dari query param
-// Default: page=1, limit=10
 func GetPaginationParams(c *fiber.Ctx) (page int, limit int, offset int) {
 	page = c.QueryInt("page", 1)
 	limit = c.QueryInt("limit", 10)

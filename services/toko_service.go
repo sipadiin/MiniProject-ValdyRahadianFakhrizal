@@ -28,18 +28,15 @@ func GetTokoByID(id uint) (*models.Toko, error) {
 }
 
 func UpdateMyToko(tokoID uint, userID uint, input UpdateTokoInput) (*models.Toko, error) {
-	// 1. Cari toko berdasarkan ID
 	toko, err := repository.FindTokoByID(tokoID)
 	if err != nil {
 		return nil, errors.New("toko tidak ditemukan")
 	}
 
-	// 2. Validasi: Apakah user yang login adalah pemilik toko ini?
 	if toko.UserID != userID {
 		return nil, errors.New("anda bukan pemilik toko ini")
 	}
 
-	// 3. Update field
 	if input.NamaToko != "" {
 		toko.NamaToko = input.NamaToko
 	}

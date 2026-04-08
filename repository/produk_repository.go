@@ -51,7 +51,6 @@ func UpdateProduk(produk *models.Produk) error {
 }
 
 func DeleteProduk(id uint) error {
-	// Delete foto terkait dulu (opsional, tergantung kebijakan storage)
 	config.DB.Where("id_produk = ?", id).Delete(&models.FotoProduk{})
 	return config.DB.Delete(&models.Produk{}, id).Error
 }

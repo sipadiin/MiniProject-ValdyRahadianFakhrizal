@@ -5,7 +5,6 @@ import (
 	"evermos/models"
 )
 
-// GetAllToko mengambil semua toko dengan filter nama dan paginasi
 func GetAllToko(limit, offset int, namaToko string) ([]models.Toko, int64, error) {
 	var tokos []models.Toko
 	var total int64
@@ -16,10 +15,8 @@ func GetAllToko(limit, offset int, namaToko string) ([]models.Toko, int64, error
 		db = db.Where("nama_toko LIKE ?", "%"+namaToko+"%")
 	}
 
-	// Hitung total data untuk pagination info
 	db.Count(&total)
 
-	// Ambil data dengan limit dan offset
 	err := db.Limit(limit).Offset(offset).Find(&tokos).Error
 	return tokos, total, err
 }

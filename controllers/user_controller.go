@@ -9,7 +9,6 @@ import (
 )
 
 func GetUser(c *fiber.Ctx) error {
-	// Ambil user_id dari locals (hasil set di JWTMiddleware)
 	userID, ok := c.Locals("user_id").(uint)
 	if !ok {
 		return utils.Unauthorized(c, "Unauthorized", "User ID tidak valid")

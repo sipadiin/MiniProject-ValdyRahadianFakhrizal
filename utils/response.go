@@ -2,7 +2,6 @@ package utils
 
 import "github.com/gofiber/fiber/v2"
 
-// Response adalah format standar untuk semua API response
 type Response struct {
 	Status  bool        `json:"status"`
 	Message string      `json:"message"`
@@ -10,7 +9,6 @@ type Response struct {
 	Data    interface{} `json:"data"`
 }
 
-// Success mengirim response sukses
 func Success(c *fiber.Ctx, message string, data interface{}) error {
 	return c.Status(fiber.StatusOK).JSON(Response{
 		Status:  true,
@@ -20,7 +18,6 @@ func Success(c *fiber.Ctx, message string, data interface{}) error {
 	})
 }
 
-// Created mengirim response 201 (untuk create berhasil)
 func Created(c *fiber.Ctx, message string, data interface{}) error {
 	return c.Status(fiber.StatusCreated).JSON(Response{
 		Status:  true,
@@ -30,7 +27,6 @@ func Created(c *fiber.Ctx, message string, data interface{}) error {
 	})
 }
 
-// BadRequest mengirim response 400
 func BadRequest(c *fiber.Ctx, message string, errors interface{}) error {
 	return c.Status(fiber.StatusBadRequest).JSON(Response{
 		Status:  false,
@@ -40,7 +36,6 @@ func BadRequest(c *fiber.Ctx, message string, errors interface{}) error {
 	})
 }
 
-// Unauthorized mengirim response 401
 func Unauthorized(c *fiber.Ctx, message string, errors interface{}) error {
 	return c.Status(fiber.StatusUnauthorized).JSON(Response{
 		Status:  false,
@@ -50,7 +45,6 @@ func Unauthorized(c *fiber.Ctx, message string, errors interface{}) error {
 	})
 }
 
-// Forbidden mengirim response 403
 func Forbidden(c *fiber.Ctx, message string, errors interface{}) error {
 	return c.Status(fiber.StatusForbidden).JSON(Response{
 		Status:  false,
@@ -60,7 +54,6 @@ func Forbidden(c *fiber.Ctx, message string, errors interface{}) error {
 	})
 }
 
-// NotFound mengirim response 404
 func NotFound(c *fiber.Ctx, message string, errors interface{}) error {
 	return c.Status(fiber.StatusNotFound).JSON(Response{
 		Status:  false,
@@ -70,7 +63,6 @@ func NotFound(c *fiber.Ctx, message string, errors interface{}) error {
 	})
 }
 
-// InternalError mengirim response 500
 func InternalError(c *fiber.Ctx, message string, errors interface{}) error {
 	return c.Status(fiber.StatusInternalServerError).JSON(Response{
 		Status:  false,

@@ -4,7 +4,7 @@ import "time"
 
 type Alamat struct {
 	Id           uint      `gorm:"primaryKey" json:"id"`
-	IdUser       uint      `json:"id_user"` // FK ke User
+	IdUser       uint      `json:"id_user"`
 	JudulAlamat  string    `gorm:"type:varchar(255)" json:"judul_alamat"`
 	NamaPenerima string    `gorm:"type:varchar(255)" json:"nama_penerima"`
 	NoTelp       string    `gorm:"type:varchar(255)" json:"no_telp"`

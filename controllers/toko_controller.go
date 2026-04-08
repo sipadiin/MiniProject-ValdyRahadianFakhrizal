@@ -20,7 +20,7 @@ func GetAllToko(c *fiber.Ctx) error {
 		return utils.InternalError(c, "Gagal mengambil data toko", err.Error())
 	}
 
-	_ = offset // offset dihitung di service/repository
+	_ = offset
 	return utils.Success(c, "Berhasil mengambil semua toko", utils.BuildPagination(tokos, page, limit, total))
 }
 

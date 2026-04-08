@@ -45,9 +45,9 @@ func GetAllProduk(c *fiber.Ctx) error {
 	page, limit, offset := utils.GetPaginationParams(c)
 
 	filters := map[string]interface{}{
-		"nama":        c.Query("nama_produk"), // dari "nama" ke "nama_produk"
-		"id_category": c.Query("category_id"), // dari "id_category" ke "category_id"
-		"id_toko":     c.Query("toko_id"),     // dari "id_toko" ke "toko_id"
+		"nama":        c.Query("nama_produk"),
+		"id_category": c.Query("category_id"),
+		"id_toko":     c.Query("toko_id"),
 		"min_harga":   c.Query("min_harga"),
 		"max_harga":   c.Query("max_harga"),
 	}
